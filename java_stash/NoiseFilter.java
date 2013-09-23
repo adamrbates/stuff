@@ -13,7 +13,7 @@ import java.util.Scanner;
  *  program.
  */
 
-public class Main{
+public class NoiseFilter {
     /*
      * What does this method do?
      */
