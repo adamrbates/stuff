@@ -65,6 +65,25 @@ public class NoiseFilter {
         System.out.println(absDif/(idealArray.length-(2*buffer)));
     }
 
+    public static double[] filterSignal(double values[], double filter[])
+    {
+        int new_length = values.length - (filter.length - 1);
+        double[] newValues = new double[new_length];
+        for (int i=0; i<new_length; i++)
+        {
+            double x = 0;
+            for(int j=0; j<filter.length; j++)
+            {
+                x += filter[j] * values[i+j];
+            }
+            newValues[i] = x;
+        }
+
+        return newValues;
+    }
+
+    /* TESTING CODE BELOW */
+
     public static boolean checkFloats(double a, double b) {
         /*
          * Check for equality between two floats.
@@ -197,22 +216,5 @@ public class NoiseFilter {
         passed = passed & test(5, noisyArray, out5, filter2Array);
 
         return passed;
-    }
-
-    public static double[] filterSignal(double values[], double filter[])
-    {
-        int new_length = values.length - (filter.length - 1);
-        double[] newValues = new double[new_length];
-        for (int i=0; i<new_length; i++)
-        {
-            double x = 0;
-            for(int j=0; j<filter.length; j++)
-            {
-                x += filter[j] * values[i+j];
-            }
-            newValues[i] = x;
-        }
-
-        return newValues;
     }
 }
