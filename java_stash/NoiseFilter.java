@@ -13,7 +13,7 @@ import java.util.Scanner;
  *  program.
  */
 
-public class NoiseFilter {
+public class Main{
     /*
      * What does this method do?
      */
@@ -39,25 +39,34 @@ public class NoiseFilter {
         System.out.println("Please enter the size of  the filter array:");
         size = usrInputs.nextInt();
         if (size < 0)
+        {
             System.out.println("cannot have a negative size array");
+        }
         else if (size % 2 == 0)
+        {
             System.out.println("cannot have an even size array");
+        }
 
         buffer = ((size-1)/2);
         double filter[] = new double[size];
         System.out.println("Please enter the values of the filter(separated by spaces):");
-        for (int i = 0 ; i <= filter.length-1; i++ ) 
+        for (int i = 0 ; i <= filter.length-1; i++)
+        {
             filter[i] = usrInputs.nextDouble();
+        }
 
         double[] filtered=filterSignal(noisyArray, filter);
 
         System.out.println("Values on the filtered result array are:");
-        for(int i=0; i<filtered.length; i++)
+        for (int i=0; i<filtered.length; i++)
         {
-            if(filtered[i] != 0.0)
+            if (filtered[i] != 0.0)
+            {
                 System.out.println(filtered[i]);
             }
         }
+
+        System.out.println("poop");
         System.out.println("The average absolute difference from the idealSignal is");
         for (int i=0; i<filtered.length; i++)
         {
